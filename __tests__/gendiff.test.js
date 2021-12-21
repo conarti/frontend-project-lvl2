@@ -5,12 +5,8 @@ import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const getFixturePath = (filename) => {
-	return join(__dirname, '..', '__fixtures__', filename);
-};
-const readFile = (filename) => {
-	return readFileSync(getFixturePath(filename), 'utf-8').trim();
-};
+const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8').trim();
 
 const stylishResult = readFile('stylish.txt');
 const jsonResult = readFile('json.txt');

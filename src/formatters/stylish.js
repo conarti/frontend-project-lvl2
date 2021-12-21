@@ -2,9 +2,12 @@ const format = (diff) => {
 	const makeIndent = (depth) => '  '.repeat(depth);
 
 	const formattedDiffs = diff.flatMap((item) => {
-		const type = item.type;
-		const property = item.property;
-		const value = item.value;
+		const {
+			type,
+			property,
+			value,
+			oldValue,
+		} = item;
 
 		switch (type) {
 			case 'removed':
@@ -12,7 +15,6 @@ const format = (diff) => {
 			case 'added':
 				return `${makeIndent(1)}+ ${property}: ${value}`;
 			case 'changed':
-				const oldValue = item.oldValue;
 				return [
 					`${makeIndent(1)}- ${property}: ${oldValue}`,
 					`${makeIndent(1)}+ ${property}: ${value}`,

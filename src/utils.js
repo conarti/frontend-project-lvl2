@@ -9,4 +9,4 @@ const getDataFromFile = (path) => {
 	return parse(data, extension);
 };
 
-export { getDataFromFile };
+export default getDataFromFile;

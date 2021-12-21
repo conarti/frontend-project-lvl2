@@ -1,4 +1,4 @@
-import { getDataFromFile } from './utils.js';
+import getDataFromFile from './utils.js';
 import compare from './compare.js';
 import format from './formatters/index.js';
 
