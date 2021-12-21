@@ -11,11 +11,19 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8').t
 const stylishResult = readFile('stylish.txt');
 const jsonResult = readFile('json.txt');
 
-test('genDiff', () => {
+test('should works with json', () => {
 	const filepath1 = getFixturePath('file1.json');
 	const filepath2 = getFixturePath('file2.json');
 
 	expect(genDiff(filepath1, filepath2)).toEqual(stylishResult);
 	expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonResult);
 	expect(() => genDiff(filepath1, filepath2, 'unsupported-format')).toThrow();
+});
+
+test('should works with yml', () => {
+	const filepath1 = getFixturePath('file1.yml');
+	const filepath2 = getFixturePath('file2.yml');
+
+	expect(genDiff(filepath1, filepath2)).toEqual(stylishResult);
+	expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonResult);
 });
