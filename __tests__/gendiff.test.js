@@ -12,8 +12,8 @@ const stylishResult = readFile('stylish.txt');
 const jsonResult = readFile('json.txt');
 
 test('genDiff', () => {
-	const filepath1 = './__fixtures__/file1.json';
-	const filepath2 = './__fixtures__/file2.json';
+	const filepath1 = getFixturePath('file1.json');
+	const filepath2 = getFixturePath('file2.json');
 
 	expect(genDiff(filepath1, filepath2)).toEqual(stylishResult);
 	expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonResult);
