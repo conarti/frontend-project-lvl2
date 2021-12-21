@@ -7,14 +7,14 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --bail"
   },
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/conarti/frontend-project-lvl2.git"
   },
-  "author": "conarti",
+  "author": "Aleksandr Belous",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/conarti/frontend-project-lvl2/issues"
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/conarti/frontend-project-lvl2#readme",
   "devDependencies": {
     "commander": "^8.3.0",
+    "jest": "^27.4.5",
     "lodash": "^4.17.21"
   }
 }

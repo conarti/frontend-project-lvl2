@@ -3,5 +3,7 @@ install:
 	npm link
 
 test:
-	clear
-	node bin/gendiff.js /Users/conarti/Desktop/file1.json file2.json
+	npx jest
+
+test-coverage:
+	npx jest --coverage
