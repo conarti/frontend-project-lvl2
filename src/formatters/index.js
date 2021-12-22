@@ -1,5 +1,6 @@
 import formatJson from './json.js';
 import formatStylish from './stylish.js';
+import formatPlain from './plain.js';
 
 const format = (diff, formatter) => {
 	switch (formatter) {
@@ -7,6 +8,8 @@ const format = (diff, formatter) => {
 			return formatJson(diff);
 		case 'stylish':
 			return formatStylish(diff);
+		case 'plain':
+			return formatPlain(diff);
 		default:
 			throw new Error(`format: Unsupported output format - ${formatter}`);
 	}
