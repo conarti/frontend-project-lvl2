@@ -1,6 +1,5 @@
 install:
 	npm ci
-	npm link
 
 test:
 	npx jest
@@ -10,3 +9,8 @@ test-coverage:
 
 lint:
 	npx eslint .
+
+link:
+	npm link
+
+setup: install link
