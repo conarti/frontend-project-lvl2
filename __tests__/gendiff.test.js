@@ -12,6 +12,7 @@ const stylishResult = readFile('stylish.txt');
 const jsonResult = readFile('json.txt');
 const stylishNestedResult = readFile('stylishNested.txt');
 const jsonNestedResult = readFile('jsonNested.txt');
+const plainNestedResult = readFile('plainNested.txt');
 
 test('should works with plain json', () => {
 	const filepath1 = getFixturePath('file1.json');
@@ -36,4 +37,11 @@ test('should works with nested files', () => {
 
 	expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonNestedResult);
 	expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(stylishNestedResult);
+});
+
+test('should works plain output', () => {
+	const filepath1 = getFixturePath('fileNested1.json');
+	const filepath2 = getFixturePath('fileNested2.json');
+
+	expect(genDiff(filepath1, filepath2, 'plain')).toEqual(plainNestedResult);
 });
