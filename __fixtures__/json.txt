@@ -1,28 +1,28 @@
 [
   {
-    "property": "follow",
-    "type": "removed",
-    "value": false
+    "name": "follow",
+    "type": "deleted",
+    "oldValue": false
   },
   {
-    "property": "host",
-    "type": "equal",
-    "value": "hexlet.io"
+    "name": "host",
+    "type": "unchanged",
+    "oldValue": "hexlet.io"
   },
   {
-    "property": "proxy",
-    "type": "removed",
-    "value": "123.234.53.22"
+    "name": "proxy",
+    "type": "deleted",
+    "oldValue": "123.234.53.22"
   },
   {
-    "property": "timeout",
+    "name": "timeout",
     "type": "changed",
-    "value": 20,
+    "newValue": 20,
     "oldValue": 50
   },
   {
-    "property": "verbose",
+    "name": "verbose",
     "type": "added",
-    "value": true
+    "newValue": true
   }
 ]
