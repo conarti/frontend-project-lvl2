@@ -2,31 +2,34 @@ import _ from 'lodash';
 
 const compare = (oldData, data) => {
 	const allKeys = _.union(_.keys(oldData), _.keys(data));
+	const sortedKeys = _.sortBy(allKeys);
 
-	const diff = allKeys.map((key) => {
-		if (!_.has(data, key)) {
-			return { property: key, type: 'removed', value: oldData[key] };
+	const diff = sortedKeys.map((name) => {
+		const oldValue = _.get(oldData, name);
+		const newValue = _.get(data, name);
+
+		if (!_.has(oldData, name) && _.has(data, name)) {
+			return { name, type: 'added', newValue };
 		}
 
-		if (!_.has(oldData, key)) {
-			return { property: key, type: 'added', value: data[key] };
+		if (_.has(oldData, name) && !_.has(data, name)) {
+			return { name, type: 'deleted', oldValue };
 		}
 
-		if (oldData[key] !== data[key]) {
+		if (_.isPlainObject(oldValue) && _.isPlainObject(newValue)) {
+			return { name, type: 'nested', children: compare(oldValue, newValue) };
+		}
+
+		if (!_.isEqual(oldValue, newValue)) {
 			return {
-				property: key,
-				type: 'changed',
-				value: data[key],
-				oldValue: oldData[key],
+				name, type: 'changed', newValue, oldValue,
 			};
 		}
 
-		return { property: key, type: 'equal', value: data[key] };
+		return { name, type: 'unchanged', oldValue };
 	});
 
-	const sortedDiff = _.sortBy(diff, 'property');
-
-	return sortedDiff;
+	return diff;
 };
 
 export default compare;
